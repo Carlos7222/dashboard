@@ -1,0 +1,101 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <div class="row">
+        <div class="card-body">
+             <form action="registrarViolencia/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-4"  style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="ano" class="form-control" placeholder="año en cuestión">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="Ncasos"  class="form-control" placeholder="Casos">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="AdultoMayor" class="form-control" placeholder="N de casos de adultos mayores">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="NiñoAdolecente"  class="form-control" placeholder="N de casos de niños y adolecentes">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="OtrosFamiliares"  class="form-control" placeholder="N de casos entre familiares">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="Pareja"  class="form-control" placeholder="N de casos entre parejas">
+                    </div>
+
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    <h1> Informe de violencia intrafamiliar </h1>
+    <div >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>N* de casos</th>
+                    <th>año</th>
+                    <th>N* de casos en adultos mayores</th>
+                    <th>N* de casos entre familiares</th>
+                    <th>N* de casos contra niños o adolecentes</th>
+                    <th>N* de casos entre pareja</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for m in muertes %}
+                    <td>
+                        {{ m.Ncasos }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.ano }} 
+                    </td>
+                    
+                    
+                    <td>
+                        {{ m.AdultoMayor }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.OtrosFamiliares }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.NiñoAdolecente }} 
+                    </td>
+                    <td>
+                        {{ m.Pareja }} 
+                    </td>
+                    <td>
+                        <a href="editarViolencia/{{m.ano}}" class="btn btn-info"> editar </a>
+                    </td>
+                    
+                    <td>
+                        <a href="eliminarViolencia/{{m.ano}}" class="btn btn-danger"> Eliminar</a>
+                    </td>
+                </tr>
+        
+                {% endfor %}
+            
+            </tbody>
+    
+        </table>
+           
+    
+    </div>
+
+    
+
+</div>
+{% endblock %}

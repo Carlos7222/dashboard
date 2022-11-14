@@ -1,0 +1,100 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <div class="row">
+        <div class="card-body">
+             <form action="registrarHurtos/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-4"  style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="ano" class="form-control" placeholder="año en cuestión">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="Ncasos"  class="form-control" placeholder=" N de Hurtos">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="residencia" class="form-control" placeholder="N de Hurtos a residencia">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="personas"  class="form-control" placeholder="N de Hurtos a personas">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="comercio"  class="form-control" placeholder="N de Hurtos a comercio">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="automotores"  class="form-control" placeholder="N de Hurtos a automotores">
+                    </div>
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    <h1> Informe de hurtos </h1>
+    <div >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>N* de Hurtos</th>
+                    <th>año</th>
+                    <th>N* de Hurtos en residencia</th>
+                    <th>N* de Hurtos a personas</th>
+                    <th>N* de Hurtos a comercios</th>
+                    <th>N* de Hurtos a automotores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for m in muertes %}
+                    <td>
+                        {{ m.Ncasos }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.ano }} 
+                    </td>
+                    
+                    
+                    <td>
+                        {{ m.residencia }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.personas }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.comercio }} 
+                    </td>
+                    <td>
+                        {{ m.automotores }} 
+                    </td>
+                    <td>
+                        <a href="editarHurtos/{{m.ano}}" class="btn btn-info"> editar </a>
+                    </td>
+                    
+                    <td>
+                        <a href="eliminarHurtos/{{m.ano}}" class="btn btn-danger"> Eliminar</a>
+                    </td>
+                </tr>
+        
+                {% endfor %}
+            
+            </tbody>
+    
+        </table>
+           
+    
+    </div>
+
+    
+
+</div>
+{% endblock %}

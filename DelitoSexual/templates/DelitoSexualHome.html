@@ -1,0 +1,87 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <div class="row">
+        <div class="card-body">
+             <form action="registrarDelitoSexuales/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-6"  style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="ano" class="form-control" placeholder="año en cuestión">
+                    </div>
+                    
+                    <div class="form-group col-6" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="Ncasos"  class="form-control" placeholder=" N de casos de violencia sexual">
+                    </div>
+                    
+                    <div class="form-group col-6" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="hombres" class="form-control" placeholder="N de casos de violencia sexual contra mujeres">
+                    </div>
+                    
+                    <div class="form-group col-6" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="mujeres"  class="form-control" placeholder="N de casos de violencia sexual contra hombres">
+                    </div>
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    <h1> Informe de violencia sexual </h1>
+    <div >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>N* de Hurtos</th>
+                    <th>año</th>
+                    <th>N* de casos de violencia sexual contra hombres</th>
+                    <th>N* de casos de violencia sexual contra mujeres</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for m in muertes %}
+                    <td>
+                        {{ m.Ncasos }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.ano }} 
+                    </td>
+                    
+                    
+                    <td>
+                        {{ m.hombres }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.mujeres }} 
+                    </td>
+                    
+                  
+                    <td>
+                        <a href="editarDelitoSexuales/{{m.ano}}" class="btn btn-info"> editar </a>
+                    </td>
+                    
+                    <td>
+                        <a href="eliminarDelitoSexuales/{{m.ano}}" class="btn btn-danger"> Eliminar</a>
+                    </td>
+                </tr>
+        
+                {% endfor %}
+            
+            </tbody>
+    
+        </table>
+           
+    
+    </div>
+
+    
+
+</div>
+{% endblock %}

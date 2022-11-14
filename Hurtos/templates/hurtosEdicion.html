@@ -1,0 +1,53 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <h1> Editar informe</h1>
+    <div class="row">
+        <div class="card-body">
+             <form action="../editarHurtos/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-4"  style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Año</label>
+                        <input type="number" required name="ano" class="form-control" value="{{violencia.ano}}" placeholder="año en cuestión" readonly disable>
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de Hurtos</label>
+                        <input type="number" required name="Ncasos"  class="form-control" value="{{violencia.Ncasos}}" placeholder="N de casos">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label"> Número de Hurtos a residencias</label>
+                        <input type="number" required name="residencia" class="form-control" value="{{violencia.residencia}}" placeholder="Violencia contra adultos mayores">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de Hurtos a personas</label>
+                        <input type="number" required name="personas"  class="form-control" value="{{violencia.personas}}" placeholder="Violencia entre familiares">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de Hurtos a comercios</label>
+                        <input type="number" required name="comercio"  class="form-control" value="{{violencia.comercio}}" placeholder="violencia contra niños">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de Hurtos a automotres</label>
+                        <input type="number" required name="automotores"  class="form-control" value="{{violencia.automotores}}" placeholder="Violencia entre parejas">
+                    </div>
+
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    
+
+    
+    
+</div>
+{% endblock %}

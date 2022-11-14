@@ -1,0 +1,53 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <h1> Editar informe</h1>
+    <div class="row">
+        <div class="card-body">
+             <form action="../editarViolencia/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-4"  style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Año</label>
+                        <input type="number" required name="ano" class="form-control" value="{{violencia.ano}}" placeholder="año en cuestión" readonly disable>
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de personas mueras</label>
+                        <input type="number" required name="Ncasos"  class="form-control" value="{{violencia.Ncasos}}" placeholder="N de casos">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label"> Número de suicidios</label>
+                        <input type="number" required name="AdultoMayor" class="form-control" value="{{violencia.AdultoMayor}}" placeholder="Violencia contra adultos mayores">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de muertes por accidentes</label>
+                        <input type="number" required name="OtrosFamiliares"  class="form-control" value="{{violencia.OtrosFamiliares}}" placeholder="Violencia entre familiares">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de muertes en transporte</label>
+                        <input type="number" required name="NiñoAdolecente"  class="form-control" value="{{violencia.NiñoAdolecente}}" placeholder="violencia contra niños">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de homicidios</label>
+                        <input type="number" required name="Pareja"  class="form-control" value="{{violencia.Pareja}}" placeholder="Violencia entre parejas">
+                    </div>
+
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    
+
+    
+    
+</div>
+{% endblock %}

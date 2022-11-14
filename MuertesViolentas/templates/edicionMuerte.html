@@ -1,0 +1,53 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <h1> Editar informe</h1>
+    <div class="row">
+        <div class="card-body">
+             <form action="../editarComplete/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-4"  style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Año</label>
+                        <input type="number" required name="ano" class="form-control" value="{{muertes.ano}}" placeholder="año en cuestión" readonly disable>
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de personas mueras</label>
+                        <input type="number" required name="personas"  class="form-control" value="{{muertes.personas}}" placeholder="N de personas">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label"> Número de suicidios</label>
+                        <input type="number" required name="suicidios" class="form-control" value="{{muertes.suicidios}}" placeholder="N de suicidios">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de muertes por accidentes</label>
+                        <input type="number" required name="muertesAccidentes"  class="form-control" value="{{muertes.muertesAccidentes}}" placeholder="N de muertes en accidentes">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de muertes en transporte</label>
+                        <input type="number" required name="muerteTransporte"  class="form-control" value="{{muertes.muerteTransporte}}" placeholder="N de muerte en transporte">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <label class="form-label">Número de homicidios</label>
+                        <input type="number" required name="homicidio"  class="form-control" value="{{muertes.homicidio}}" placeholder="N de homicidios">
+                    </div>
+
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    
+
+    
+    
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <div class="row">
+        <div class="card-body">
+             <form action="registrarMuertes/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-4"  style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="ano" class="form-control" placeholder="año en cuestión">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="personas"  class="form-control" placeholder="N de personas">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="suicidios" class="form-control" placeholder="N de suicidios">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="muertesAccidentes"  class="form-control" placeholder="N de muertes en accidentes">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="muerteTransporte"  class="form-control" placeholder="N de muerte en transporte">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="homicidio"  class="form-control" placeholder="N de homicidios">
+                    </div>
+
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    <h1> Informe de personas muertas </h1>
+    <div >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>N* de personas</th>
+                    <th>año</th>
+                    <th>N* de suicidios</th>
+                    <th>N* de muertes en accidentes</th>
+                    <th>N* de muerte en transporte</th>
+                    <th>N* de homicidio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for m in muertes %}
+                    <td>
+                        {{ m.personas }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.ano }} 
+                    </td>
+                    
+                    
+                    <td>
+                        {{ m.suicidios }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.muertesAccidentes }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.muerteTransporte }} 
+                    </td>
+                    <td>
+                        {{ m.homicidio }} 
+                    </td>
+                    <td>
+                        <a href="editarMuertes/{{m.ano}}" class="btn btn-info"> editar </a>
+                    </td>
+                    
+                    <td>
+                        <a href="eliminarMuertes/{{m.ano}}" class="btn btn-danger"> Eliminar</a>
+                    </td>
+                </tr>
+        
+                {% endfor %}
+            
+            </tbody>
+    
+        </table>
+           
+    
+    </div>
+
+    
+
+</div>
+{% endblock %}

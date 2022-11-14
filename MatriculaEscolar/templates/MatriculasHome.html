@@ -1,0 +1,100 @@
+
+{% extends "./base.html"%}
+
+{% block body %}
+<div>
+    <div class="row">
+        <div class="card-body">
+             <form action="registrarMatriculas/" method="post">{% csrf_token%}
+                <div class="row">
+                    <div class="form-group col-4"  style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="ano" class="form-control" placeholder="año en cuestión">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="Nmatriculados"  class="form-control" placeholder=" Total matriculados">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="preescolar" class="form-control" placeholder="N de matriculados en preescolar">
+                    </div>
+                    
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="primaria"  class="form-control" placeholder="N de matriculados en educación primaria">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="basicaSecundarioa"  class="form-control" placeholder="N de matriculados en educación basica secundaria">
+                    </div>
+                    <div class="form-group col-4" style='margin-top:20px;margin-bottom:10px;'>
+                        <input type="number" required name="media"  class="form-control" placeholder="N de matriculados en educación media">
+                    </div>
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+
+             </form>
+        </div>
+
+    </div>
+    <h1> Informe de Matriculados </h1>
+    <div >
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>N* de Matriculado</th>
+                    <th>año</th>
+                    <th>N* de matriculados en preescolar</th>
+                    <th>N* de matriculados en primaria</th>
+                    <th>N* de matriculados en basica secundaria</th>
+                    <th>N* de matriculados en media</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for m in muertes %}
+                    <td>
+                        {{ m.Ncasos }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.Nmatriculados }} 
+                    </td>
+                    
+                    
+                    <td>
+                        {{ m.preescolar }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.primaria }} 
+                    </td>
+                    
+                    <td>
+                        {{ m.basicaSecundarioa }} 
+                    </td>
+                    <td>
+                        {{ m.media }} 
+                    </td>
+                    <td>
+                        <a href="editarMatriculas/{{m.ano}}" class="btn btn-info"> editar </a>
+                    </td>
+                    
+                    <td>
+                        <a href="eliminarMatriculas/{{m.ano}}" class="btn btn-danger"> Eliminar</a>
+                    </td>
+                </tr>
+        
+                {% endfor %}
+            
+            </tbody>
+    
+        </table>
+           
+    
+    </div>
+
+    
+
+</div>
+{% endblock %}
